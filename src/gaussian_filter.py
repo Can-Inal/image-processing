@@ -88,17 +88,17 @@ if __name__ == "__main__":
 
     plt.subplot(1, 3, 1)
     plt.imshow(img_filtered, cmap="gray")
-    plt.title("with library")
+    plt.title("Scipy")
     plt.axis("off")
 
     plt.subplot(1, 3, 2)
     plt.imshow(result_spatial, cmap="gray")
-    plt.title("own implementation spatial")
+    plt.title("Spatial")
     plt.axis("off")
 
     plt.subplot(1, 3, 3)
     plt.imshow(result_fourier, cmap="gray")
-    plt.title("own implementation fourier")
+    plt.title("Fourier")
     plt.axis("off")
 
     if args.output:

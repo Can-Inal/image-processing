@@ -272,15 +272,6 @@ Run all checks manually with:
 ```bash
 pre-commit run --all-files
 ```
-
-## Image Note
-
-No input image is included in this repository.
-
-Use your own image for experimentation. If you publish your own image with this repository, make sure that the image license allows public sharing.
-
-The example output images in `assets/` are generated results from running the scripts.
-
 ## Purpose
 
 This repository is mainly for learning and experimenting with image processing concepts in Python.
