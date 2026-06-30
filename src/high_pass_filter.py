@@ -1,4 +1,5 @@
 import argparse
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -6,6 +7,11 @@ import numpy as np
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("image_path", help="Path to the input image")
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="Path where the output figure should be saved",
+    )
     args = parser.parse_args()
 
     img = plt.imread(args.image_path) / 255
@@ -50,11 +56,24 @@ if __name__ == "__main__":
     plt.subplot(1, 2, 1)
     plt.imshow(img, cmap="gray")
     plt.title("original")
+    plt.axis("off")
 
     # to plot high pass filtered image we need to take abs value.
     # it contains small positive and negative values.
     plt.subplot(1, 2, 2)
-    plt.imshow(np.abs(img_high_pass), cmap="gray")
+    img_high_pass_abs = np.abs(img_high_pass)
+    plt.imshow(
+        img_high_pass_abs,
+        cmap="gray",
+        vmin=0,
+        vmax=np.percentile(img_high_pass_abs, 99),
+    )
     plt.title("high pass")
+    plt.axis("off")
 
-    plt.show()
+    if args.output:
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    else:
+        plt.show()

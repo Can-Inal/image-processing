@@ -1,7 +1,18 @@
+import argparse
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="Path where the output figure should be saved",
+    )
+    args = parser.parse_args()
+
     # define the image size.
     h = 424
     w = 640
@@ -50,4 +61,9 @@ if __name__ == "__main__":
     plt.title("spectrum")
     plt.axis("off")
 
-    plt.show()
+    if args.output:
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    else:
+        plt.show()

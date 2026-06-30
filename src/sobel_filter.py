@@ -1,4 +1,5 @@
 import argparse
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -7,6 +8,11 @@ import scipy.ndimage as nd
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("image_path", help="Path to the input image")
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="Path where the output figure should be saved",
+    )
     args = parser.parse_args()
 
     img = plt.imread(args.image_path) / 255
@@ -65,4 +71,9 @@ if __name__ == "__main__":
     plt.title("y-derivative: horizontal edges")
     plt.axis("off")
 
-    plt.show()
+    if args.output:
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    else:
+        plt.show()
