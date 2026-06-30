@@ -54,74 +54,74 @@ Run an image-based script by passing the image path as an argument.
 Example:
 
 ```bash
-python sobel_filter.py path/to/your_image.jpg
+python src/sobel_filter.py path/to/your_image.jpg
 ```
 
 or:
 
 ```bash
-python fourier_spectrum.py path/to/your_image.jpg
+python src/fourier_spectrum.py path/to/your_image.jpg
 ```
 
-The script `cos_patterns.py` creates synthetic cosine-pattern images, so it does not need an external image file:
+The script `src/cos_patterns.py` creates synthetic cosine-pattern images, so it does not need an external image file:
 
 ```bash
-python cos_patterns.py
+python src/cos_patterns.py
 ```
 
 Each script opens a Matplotlib window showing the result of the corresponding image processing operation.
 
 ## Script Overview
 
-### `sampling.py`
+### `src/sampling.py`
 
 Demonstrates basic sampling-related image operations.
 
-### `mean_filter.py`
+### `src/mean_filter.py`
 
 Applies a mean filter to smooth an image.
 
-### `gaussian_filter.py`
+### `src/gaussian_filter.py`
 
 Applies Gaussian smoothing in the spatial domain.
 
-### `corr_conv.py`
+### `src/corr_conv.py`
 
 Compares correlation and convolution using an asymmetric kernel.
 
-### `sobel_filter.py`
+### `src/sobel_filter.py`
 
 Applies Sobel filters in x- and y-direction and computes the gradient magnitude.
 
-### `laplace_filter.py`
+### `src/laplace_filter.py`
 
 Applies a Laplace filter for second-derivative edge detection.
 
-### `fourier_spectrum.py`
+### `src/fourier_spectrum.py`
 
 Computes and visualizes the Fourier magnitude spectrum of an image.
 
-### `cos_patterns.py`
+### `src/cos_patterns.py`
 
 Creates synthetic cosine patterns and visualizes their Fourier spectra.
 
-### `low_pass_filter.py`
+### `src/low_pass_filter.py`
 
 Applies an ideal low-pass filter in the Fourier domain.
 
-### `high_pass_filter.py`
+### `src/high_pass_filter.py`
 
 Applies an ideal high-pass filter in the Fourier domain.
 
-### `gaussian_low_pass_filter.py`
+### `src/gaussian_low_pass_filter.py`
 
 Applies a Gaussian low-pass filter in the Fourier domain.
 
-### `band_pass_filter.py`
+### `src/band_pass_filter.py`
 
 Keeps only a selected frequency band in the Fourier domain.
 
-### `band_stop_filter.py`
+### `src/band_stop_filter.py`
 
 Removes a selected frequency band in the Fourier domain.
 
@@ -159,24 +159,6 @@ Some filters produce positive and negative values. For example:
 * Laplace filters
 
 For visualization, these results are sometimes displayed using absolute values.
-
-## Code Quality
-
-This repository can use `pre-commit` and `ruff` for basic code checks and formatting.
-
-Run all checks manually with:
-
-```bash
-pre-commit run --all-files
-```
-
-## Image Note
-
-No image file is included in this repository.
-
-Use your own image for experimentation. If you publish your repository publicly, make sure that any image you add has a license that allows public sharing.
-
-Recommended image sources include public-domain or Creative Commons licensed images.
 
 ## Purpose
 
